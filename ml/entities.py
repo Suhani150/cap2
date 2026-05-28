@@ -4,10 +4,19 @@ nlp = spacy.load("en_core_web_sm")
 
 # simple app list (can expand later)
 APPS = [
-    "chrome", "browser",
-    "notepad", "editor",
-    "calculator", "calc",
-    "explorer", "files"
+    "chrome",
+    "browser",
+    "notepad",
+    "editor",
+    "calculator",
+    "calc",
+    "explorer",
+    "files",
+    "vscode",
+    "code",
+    "paint",
+    "spotify",
+    "telegram"
 ]
 def extract_entities(text: str) -> dict:
     doc = nlp(text)

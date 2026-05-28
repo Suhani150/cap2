@@ -11,8 +11,17 @@ def classify_intent_bert(text: str):
 
     label = result[0]["label"]
 
-    # Simple mapping
-    if any(word in text.lower() for word in ["open", "start", "close", "play"]):
+    # Automation keywords
+    if any(word in text.lower() for word in [
+        "open",
+        "start",
+        "close",
+        "play",
+        "screenshot",
+        "desktop",
+        "show",
+        "take"
+    ]):
         return "automation"
 
     return "query"
@@ -22,4 +31,6 @@ def classify_intent_bert(text: str):
 if __name__ == "__main__":
 
     print(classify_intent_bert("open chrome"))
+    print(classify_intent_bert("take screenshot"))
+    print(classify_intent_bert("show desktop"))
     print(classify_intent_bert("what is AI"))

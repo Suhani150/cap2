@@ -5,13 +5,24 @@ import webbrowser
 APP_ALIASES = {
     "browser": "chrome",
     "chrome": "chrome",
+
     "editor": "notepad",
     "notepad": "notepad",
+
     "calc": "calculator",
     "calculator": "calculator",
+
     "files": "explorer",
-    "explorer": "explorer"
+    "explorer": "explorer",
+
+    "vscode": "code",
+    "code": "code",
+
+    "paint": "mspaint",
+    "spotify": "spotify",
+    "telegram": "telegram"
 }
+
 
 def execute_command(data: dict):
 
@@ -48,6 +59,26 @@ def execute_command(data: dict):
             os.system("start explorer")
             return {"status": "Opened File Explorer"}
 
+        # Open VS Code
+        elif app == "code":
+            os.system("start code")
+            return {"status": "Opened VS Code"}
+
+        # Open Paint
+        elif app == "mspaint":
+            os.system("start mspaint")
+            return {"status": "Opened Paint"}
+
+        # Open Spotify
+        elif app == "spotify":
+            os.system("start spotify")
+            return {"status": "Opened Spotify"}
+
+        # Open Telegram
+        elif app == "telegram":
+            os.system("start telegram")
+            return {"status": "Opened Telegram"}
+
         # Screenshot
         elif "screenshot" in text:
             os.system("start ms-screenclip:")
@@ -69,7 +100,9 @@ def execute_command(data: dict):
 
         if query:
             webbrowser.open(f"https://www.google.com/search?q={query}")
-            return {"status": f"Searching for '{query}' on Google"}
+            return {
+                "status": f"Searching for '{query}' on Google"
+            }
 
         return {"status": "No query found"}
 
