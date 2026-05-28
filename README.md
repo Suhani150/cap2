@@ -234,7 +234,7 @@ uvicorn app:app --reload
 - ML pipeline orchestration
 - API response handling
 
-## Suhani
+## Suhani Ranjan
 - NLP preprocessing
 - Entity extraction
 - Input pipeline development
