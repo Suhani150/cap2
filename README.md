@@ -36,7 +36,9 @@ This project demonstrates the practical implementation of modern AI technologies
 - DistilBERT-based intent classification
 - LangChain + FAISS semantic retrieval
 - HuggingFace embeddings integration
-- Desktop automation execution
+- Dynamic desktop automation execution
+- Intelligent YouTube and Google search support
+- Dynamic app detection and opening
 - FastAPI REST API integration
 - Command chaining support
 - Structured JSON responses
@@ -73,7 +75,7 @@ Text Preprocessing
       ↓
 Entity Extraction
       ↓
-DistilBERT Intent Classification
+Intent Classification
       ↓
 Command Routing
       ↓
@@ -112,9 +114,10 @@ DistilBERT transformer model was integrated for intent classification.
 
 The module classifies user commands into:
 - automation
+- web_search
 - query
 
-This enables intelligent routing of commands within the system.
+A hybrid intent-routing approach was implemented using rule-based NLP logic for improved real-time command reliability.
 
 ---
 
@@ -133,17 +136,28 @@ This module enables semantic understanding of user queries.
 ---
 
 ## 5. Automation Execution Module
-The executor module performs desktop automation tasks such as:
+The executor module performs intelligent desktop automation tasks such as:
 - opening Chrome
 - opening Notepad
 - opening Calculator
 - opening File Explorer
 - opening VS Code
 - opening Paint
+- opening Spotify
+- opening YouTube
 - taking screenshots
 - showing desktop
+- battery status retrieval
 
-Automation is executed using Python OS commands.
+The system supports dynamic application opening using NLP-based entity extraction and OS-level command execution.
+
+Example:
+- open chrome
+- open spotify
+- launch telegram
+- search coldplay songs on YouTube
+
+Automation is executed using Python OS commands and web browser integration.
 
 ---
 
@@ -171,6 +185,7 @@ AI-Voice-Assistant/
 │   ├── executor.py
 │   ├── main_pipeline.py
 │
+├── assistant.py
 ├── app.py
 ├── README.md
 ├── requirements.txt
@@ -223,6 +238,12 @@ pip install -r requirements.txt
 uvicorn app:app --reload
 ```
 
+## Run Interactive Assistant
+
+```bash
+python assistant.py
+```
+
 ---
 
 # API Endpoint
@@ -244,14 +265,15 @@ uvicorn app:app --reload
 | Command | Action |
 |---|---|
 | open chrome | Opens Chrome browser |
-| open notepad | Opens Notepad |
-| open calculator | Opens Calculator |
-| open explorer | Opens File Explorer |
+| open spotify | Opens Spotify |
 | open vscode | Opens VS Code |
 | open paint | Opens Paint |
+| open youtube | Opens YouTube |
+| search Coldplay songs on youtube | Searches YouTube dynamically |
+| search artificial intelligence | Searches Google |
 | take screenshot | Opens screenshot tool |
 | show desktop | Minimizes all windows |
-| what is AI | Semantic query retrieval |
+| show battery | Displays battery percentage |
 
 ---
 
@@ -275,6 +297,37 @@ uvicorn app:app --reload
   ]
 }
 ```
+
+---
+
+# Interactive Assistant Support
+
+The project includes an interactive terminal-based AI assistant that continuously accepts user commands and processes them through the NLP pipeline.
+
+Example:
+
+```text
+Enter command: search coldplay songs on youtube
+
+Classified Intent: web_search
+
+Extracted Entities:
+{
+  "platform": "youtube",
+  "query": "coldplay songs"
+}
+
+Action Result:
+{
+  "status": "Searching 'coldplay songs' on YouTube"
+}
+```
+
+The assistant supports:
+- dynamic automation
+- intelligent web search
+- command chaining
+- structured NLP outputs
 
 ---
 
@@ -336,6 +389,8 @@ The project demonstrates practical implementation of:
 - HuggingFace embeddings
 - FastAPI backend APIs
 - Desktop automation execution
+
+The assistant also supports dynamic application automation and intelligent platform-aware web search using NLP-based entity extraction.
 
 This project provided valuable experience in:
 - AI system integration
